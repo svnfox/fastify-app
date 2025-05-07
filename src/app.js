@@ -11,6 +11,12 @@ module.exports = async function (fastify, opts) {
 
   // Do not touch the following lines
 
+  // 使用 AutoLoad 自动加载 middlewares 文件夹
+  fastify.register(AutoLoad, {
+    dir: path.join(__dirname, 'middlewares'),
+    options: Object.assign({}, opts)
+  })
+
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused
   // through your application
